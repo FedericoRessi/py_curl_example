@@ -6,14 +6,15 @@ Created on 15 Aug 2016
 
 import logging
 
+import bs4
 import pycurl
 import six
 
 
 LOG = logging.getLogger(__name__)
 
-REQUIRED_URL = 'http://www.oldclassiccar.co.uk/forum/phpbb/phpBB2/' + \
-               'viewtopic.php?t=12591'
+REQUIRED_URL = u'http://www.oldclassiccar.co.uk/forum/phpbb/phpBB2/' + \
+               u'viewtopic.php?t=12591'
 REQUIRED_ENCODING = 'iso-8859-1'
 
 
@@ -41,7 +42,22 @@ def get_html(url, encoding=None):
         curl.close()
 
 
+def parse_html(html):
+    "Parses given html."
+    page = Page()
+    soup = bs4.BeautifulSoup(html, 'html.parser')
+    page.title = soup.title.string
+    return page
+
+
+class Page(object):
+    "Model class returned by parse_html function."
+
+    title = None
+
+
 def main():
     "My script entry point."
 
-    get_html(REQUIRED_URL, encoding=REQUIRED_ENCODING)
+    html = get_html(REQUIRED_URL, encoding=REQUIRED_ENCODING)
+    parse_html(html)
