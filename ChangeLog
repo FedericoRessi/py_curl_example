@@ -1,6 +1,8 @@
 CHANGES
 =======
 
+* Parse all post entries
+* Parsing page using BS4
 * Download required URL using PyCurl
 * Test bs4 library
 * Initial commit

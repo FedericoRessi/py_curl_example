@@ -12,7 +12,7 @@ from py_curl_example import command
 class TestGetHtm(unittest.TestCase):
     'Test case for get_html function'
 
-    def test_get_required_html(self):
+    def test_get_html(self):
         'Test get_html function with required HTML and encoding'
 
         html = command.get_html(
@@ -24,11 +24,10 @@ class TestGetHtm(unittest.TestCase):
 class TestParseHtm(unittest.TestCase):
     'Test case for get_html function'
 
-    def test_parse_required_html(self):
+    def test_get_entries(self):
         'Test get_html function with required HTML and encoding'
 
-        html = command.get_html(
-            command.REQUIRED_URL, encoding=command.REQUIRED_ENCODING)
-        page = command.parse_html(html)
+        entries = list(command.get_page_entries(
+            command.REQUIRED_URL, encoding=command.REQUIRED_ENCODING))
 
-        self.assertEqual('Classic Car Rescue - C5', page.title)
+        self.assertEqual(127, len(entries))
