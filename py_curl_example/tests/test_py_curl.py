@@ -9,8 +9,8 @@ import pycurl
 import six
 
 
-REQUEIRED_URL = 'http://www.oldclassiccar.co.uk/forum/phpbb/phpBB2/' + \
-                'viewtopic.php?t=12591'
+REQUIRED_URL = 'http://www.oldclassiccar.co.uk/forum/phpbb/phpBB2/' + \
+               'viewtopic.php?t=12591'
 
 
 class TestPyCurl(unittest.TestCase):
@@ -34,7 +34,7 @@ class TestPyCurl(unittest.TestCase):
         buf = six.BytesIO()
         curl = pycurl.Curl()
         self.addCleanup(curl.close)
-        curl.setopt(curl.URL, REQUEIRED_URL)
+        curl.setopt(curl.URL, REQUIRED_URL)
         curl.setopt(curl.WRITEDATA, buf)
 
         curl.perform()

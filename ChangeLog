@@ -1,5 +1,7 @@
 CHANGES
 =======
 
+* Download required URL using PyCurl
+* Test bs4 library
 * Initial commit
 * Initial commit
