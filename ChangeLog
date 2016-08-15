@@ -1,6 +1,7 @@
 CHANGES
 =======
 
+* Write basic howto
 * Wite posts to CSV
 * Parse all post entries
 * Parsing page using BS4
