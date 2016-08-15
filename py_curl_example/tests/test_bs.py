@@ -8,7 +8,6 @@ import os
 import unittest
 
 import bs4
-import six
 
 
 HTML_DOC = """
@@ -31,16 +30,6 @@ TESTS_DIR = os.path.dirname(__file__)
 REQUIRED_WEB_PAGE = os.path.join(TESTS_DIR, 'required_page.html')
 
 
-if six.PY2:
-    # Python 2 doesn't support encoding parameter!
-    def open_file(filename, mode='r', encoding=None):
-        "Open a file ingnoring encoding parameter"
-        return open(filename, mode=mode)
-
-else:
-    open_file = open
-
-
 class TestBeautifulSoup(unittest.TestCase):
     "Test case for bs4 library"
 
@@ -55,7 +44,7 @@ class TestBeautifulSoup(unittest.TestCase):
     def test_parse_required_page(self):
         "Test parsing required web page."
 
-        with open_file(REQUIRED_WEB_PAGE, encoding='iso-8859-1') as html_file:
+        with open(REQUIRED_WEB_PAGE, encoding='iso-8859-1') as html_file:
             html = html_file.read()
 
         soup = bs4.BeautifulSoup(html, 'html.parser')

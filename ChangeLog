@@ -1,6 +1,7 @@
 CHANGES
 =======
 
+* Wite posts to CSV
 * Parse all post entries
 * Parsing page using BS4
 * Download required URL using PyCurl
